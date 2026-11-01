@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dungeon Quest</string>
+    <string name="target_url">https://ais-pre-dungeonquest-589460615465.us-east1.run.app</string>
+    <string name="offline_title">Sem Conexão à Internet</string>
+    <string name="offline_message">Verifique sua conexão Wi-Fi ou dados móveis para continuar usando o Dungeon Quest.</string>
+    <string name="offline_retry">Tentar Novamente</string>
+    <string name="exit_prompt">Pressione novamente para sair do aplicativo</string>
+</resources>

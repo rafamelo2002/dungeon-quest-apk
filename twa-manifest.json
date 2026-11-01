@@ -1,0 +1,18 @@
+{
+  "packageId": "com.aistudio.dungeonquest",
+  "host": "ais-pre-dungeonquest-589460615465.us-east1.run.app",
+  "name": "Dungeon Quest",
+  "launcherName": "Dungeon Ques",
+  "display": "fullscreen",
+  "themeColor": "#3b82f6",
+  "navigationColor": "#3b82f6",
+  "backgroundColor": "#0f172a",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "/icon-512.png",
+  "maskableIconUrl": "/icon-512.png",
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "Studio2APK"
+}
