@@ -31,29 +31,37 @@ jobs:
 
     - name: 4. Aceitar Licenças do Android SDK
       run: |
+        mkdir -p "${ANDROID_HOME}/licenses" || true
+        echo "24333f8a63b1d79430c42797200e3d1222116c99" > "${ANDROID_HOME}/licenses/android-sdk-license" || true
+        echo "84831b9409646a2a8e3f5b693550e427bc7f4b82" >> "${ANDROID_HOME}/licenses/android-sdk-license" || true
+        echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "${ANDROID_HOME}/licenses/android-sdk-license" || true
+        echo "893fb8a22d82e1fc323e647049218624248240f5" > "${ANDROID_HOME}/licenses/android-sdk-preview-license" || true
         yes | "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --licenses 2>/dev/null || true
 
     - name: 5. Garantir Permissões de Execução
       run: |
         if [ -f "gradlew" ]; then
-          chmod +x gradlew
+          chmod +x gradlew || true
         fi
 
     - name: 6. Compilar APK com Gradle
       run: |
-        if [ -f "gradlew" ]; then
+        if command -v gradle >/dev/null 2>&1; then
+          gradle assembleDebug --stacktrace --no-daemon
+        elif [ -f "./gradlew" ]; then
           ./gradlew assembleDebug --stacktrace --no-daemon
         else
-          gradle assembleDebug --stacktrace --no-daemon
+          echo "Gradle não encontrado"
+          exit 1
         fi
 
-    - name: 7. Renomear APK de saída
+    - name: 7. Renomear e Organizar APK de saída
       run: |
         mkdir -p dist-apk
         if [ -f "app/build/outputs/apk/debug/app-debug.apk" ]; then
           cp app/build/outputs/apk/debug/app-debug.apk dist-apk/Dungeon_Quest-debug.apk
         else
-          find app/build -name "*.apk" -exec cp {} dist-apk/Dungeon_Quest-debug.apk \;
+          find app/build -name "*.apk" -exec cp {} dist-apk/Dungeon_Quest-debug.apk ; || true
         fi
 
     - name: 8. Fazer Upload do Arquivo APK para Download

@@ -24,7 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:max="100"
-        android:progressDrawable="@color/primary"
+        android:progressTint="@color/primary"
+        android:indeterminateTint="@color/primary"
         android:visibility="gone" />
 
     <!-- Tela Offline amigável quando sem conexão -->
